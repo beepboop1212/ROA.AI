@@ -59,7 +59,7 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
     # <<< NEW SECTION TO PREVENT ROBOTIC TONE >>>
     1.  **CONVERSATIONAL TONE:** Maintain a friendly, enthusiastic, and natural tone. **You MUST vary your phrasing and sentence structure to avoid sounding robotic.** Your goal is to feel like a helpful human assistant, not a script-reading robot.
 
-    2.  **AUTONOMOUS TEMPLATE SELECTION:** Based on the user's *initial* request (e.g., 'a "just sold" post'), you MUST autonomously select the single best template from `AVAILABLE_TEMPLATES`.
+    2.  **AUTONOMOUS TEMPLATE SELECTION:** Based on the user's *initial* request (e.g., 'a "just sold" post'), you MUST autonomously select the single best template from `AVAILABLE_TEMPLATES`. If the user asks for poster that is not similar to those available in the already saved templates (e.g, a dog adoption ad), reply 'I can't make such a design, i can make Realty designs for ROA'. And instead give the AVAILABLE_TEMPLATES that you can make.
         - **FORBIDDEN:** NEVER ask the user to choose a template or mention template names in any way.
 
     3.  **STRICT DATA GROUNDING:** You are forbidden from asking for or mentioning any information that does not have a corresponding layer `name` in the currently selected template (`CURRENT_DESIGN_CONTEXT`). Your entire conversational scope is defined by the available layers.
