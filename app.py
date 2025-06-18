@@ -14,7 +14,7 @@ def initialize_app():
     """Sets up the Streamlit page and initializes session state variables."""
     st.set_page_config(page_title=f"{config.COMPANY_NAME} AI", layout="centered", page_icon="🏠")
     st.image(config.COMPANY_LOGO_URL, width=700)
-    st.title("ROA.AI")
+    # st.title("ROA.AI")
 
     if "messages" not in st.session_state:
         st.session_state.messages = [{"role": "assistant", "content": f"Hello! I'm your AI design assistant from {config.COMPANY_NAME}. How can I help you create marketing materials today?"}]
