@@ -104,7 +104,7 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
         {'role': 'user', 'parts': [system_prompt]},
         {'role': 'model', 'parts': [f"Understood. I will strictly follow all Core Directives. I will select templates myself, I will never show technical layer names to the user, and I will only ask for information that fits the selected template. I will keep all other rules perfectly."]}
     ]
-    for msg in messages[-8:]:
+    for msg in messages[-15:]:
         if msg['role'] == 'assistant' and '![Generated Image]' in msg['content']:
             continue
         conversation.append({'role': 'user' if msg['role'] == 'user' else 'model', 'parts': [msg['content']]})
