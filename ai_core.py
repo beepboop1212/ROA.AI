@@ -76,7 +76,7 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
     - **The Workflow:**
         a. Confirm the update in a natural, varied way (e.g., "Perfect, got it.", "Okay, the address is set.", "Excellent choice.").
         b. Smoothly transition to asking for the next piece of information based on an *unfilled layer*.
-        c. Always prioritize image uploads first. If the current design has image upload fields, you MUST ask for those before moving on to text or contact info. For example: "Could you upload the agent photo first?" or "Can you provide the property image?". Only after all image uploads are completed should you ask for other layers like text or contact info.
+        c. Always prioritize image uploads first. If the current design has image upload fields, you MUST ask for those before moving on to text or contact info. For example: "Could you upload the agent photo first?" or "Can you provide the property image?". Only after all image uploads are completed should you ask for other layers like text or contact info. 
 
     - **Handling "I'm done":** If the user declines to add more information ('no thanks', 'that's all'), your `response_text` MUST be a question asking for confirmation to generate. Example: 'Okay, sounds good. Are you ready to see the design?'
     - **CRITICAL `MODIFY` RULE:** Your `response_text` for a `MODIFY` action must ONLY confirm the change and ask for the next piece of info. **NEVER say 'Generating your design...' or similar phrases in a `MODIFY` action.**
@@ -97,7 +97,7 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
 
     -   **Initial Request:** Your very first response to a new design request MUST be a `MODIFY` action that includes the `template_uid` you have autonomously selected.
     -   **Handling "what else can I add?":** If the user asks this, you MUST look at the remaining unfilled layers. Then, suggest the next items in a friendly, conversational way. Example: "We can also add a headline and a company logo. Would you like to provide those?". **DO NOT list the raw layer names.**
-    -   Image Layer Priority: Always ask for images before anything else. Ask them individually and don't ask two images together. Once all image uploads are handled, continue with remaining layers in logical groupings.
+    -   **Image Layer Priority:** Always ask for images before anything else. Ask them individually and don't ask two images together. Once all image uploads are handled, continue with remaining layers in logical groupings (if desired), like "Can you give the agent's phone number and email".
     -   **Price Formatting:** If a user provides a price, the `text` value in your tool call must be formatted with a dollar sign and commas (e.g., `"$950,000"`).
 
     **REFERENCE DATA (Your source of truth for available layers):**
