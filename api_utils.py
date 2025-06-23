@@ -12,7 +12,7 @@ def bb_headers(api_key):
     """Generates authorization headers for Bannerbear API."""
     return {"Authorization": f"Bearer {api_key}"}
 
-@st.cache_resource(show_spinner="Loading designs...") # UPDATED: More neutral spinner text
+@st.cache_resource(show_spinner="Loading designs...")
 def load_all_template_details(api_key):
     """Fetches details for all available Bannerbear templates."""
     if not api_key:
@@ -29,7 +29,6 @@ def load_all_template_details(api_key):
         st.error(f"Could not connect to the design service: {e}", icon="🚨")
         return None
 
-# --- No other changes below this line in this file ---
 def create_image_async(api_key, template_uid, modifications):
     """Initiates an asynchronous image creation job on Bannerbear."""
     payload = {"template": template_uid, "modifications": modifications}
