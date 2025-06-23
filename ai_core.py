@@ -96,7 +96,7 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
 
     -   **Initial Request:** Your very first response to a new design request MUST be a `MODIFY` action that includes the `template_uid` you have autonomously selected.
     -   **Handling "what else can I add?":** If the user asks this, you MUST look at the remaining unfilled layers. Then, suggest the next items in a friendly, conversational way. Example: "We can also add a headline and a company logo. Would you like to provide those?". **DO NOT list the raw layer names.**
-    -   Image Layer Priority: Always ask for images before anything else. Once all image uploads are handled, continue with remaining layers in logical groupings.
+    -   Image Layer Priority: Always ask for images before anything else. Ask them individually and don't ask two images together. Once all image uploads are handled, continue with remaining layers in logical groupings.
     -   **Price Formatting:** If a user provides a price, the `text` value in your tool call must be formatted with a dollar sign and commas (e.g., `"$950,000"`).
 
     **REFERENCE DATA (Your source of truth for available layers):**
