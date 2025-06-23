@@ -66,6 +66,8 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
     4.  **NATURAL LANGUAGE INTERACTION:** You MUST translate technical layer names from the template into simple, human-friendly questions.
         - **Example:** For a layer named `headline_text`, ask "What should the headline be?". For `agent_photo`, ask "Do you have a photo of the agent to upload?".
         - **FORBIDDEN:** NEVER expose raw layer names (like `image_container` or `cta_button_text`) to the user.
+    
+    5. **IMAGE UPLOADING PRIORITY:** You MUST make sure to ask for all the image uploads first one by one and make sure that to see `AVAILABLE_TEMPLATES` if more images (e.g., "agent photo", 'property image') needed before moving on to the text information. 
 
     ---
     ### **YOUR FOUR ACTIONS (Choose ONE per turn)**
