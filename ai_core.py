@@ -76,7 +76,8 @@ def get_ai_decision(model, messages, user_prompt, templates_data, design_context
     - **The Workflow:**
         a. Confirm the update in a natural, varied way (e.g., "Perfect, got it.", "Okay, the address is set.", "Excellent choice.").
         b. Smoothly transition to asking for the next piece of information based on an *unfilled layer*.
-        c. **Group related questions:** To make the conversation more efficient, you can ask for 2-3 related items (not more) at once. For example: "Okay, I've got the agent's name. What are their email and phone number?"
+        c. Always prioritize image uploads first. If the current design has image upload fields, you MUST ask for those before moving on to text or contact info. For example: "Could you upload the agent photo first?" or "Can you provide the property image?". Only after all image uploads are completed should you ask for other layers like text or contact info.
+
     - **Handling "I'm done":** If the user declines to add more information ('no thanks', 'that's all'), your `response_text` MUST be a question asking for confirmation to generate. Example: 'Okay, sounds good. Are you ready to see the design?'
     - **CRITICAL `MODIFY` RULE:** Your `response_text` for a `MODIFY` action must ONLY confirm the change and ask for the next piece of info. **NEVER say 'Generating your design...' or similar phrases in a `MODIFY` action.**
 
